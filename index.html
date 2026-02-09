@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>R💙H</title>
+  <title>R💙H Valentine</title>
 
   <style>
     body {
@@ -14,12 +14,41 @@
       justify-content: center;
       background: linear-gradient(135deg, #ffd6e8, #ffeef6);
       font-family: Arial, sans-serif;
-      <div id="initials">
-        <span class="letter">R</span>
-        <span class="letter">H</span>
-      </div>
     }
-        
+
+    /* Floating initials */
+    #initials {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      z-index: 1;
+    }
+
+    .letter {
+      font-size: 90px;
+      color: #ff4d88;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+    }
+
+    .letter::after {
+      content: "❤️❤️❤️❤️❤️";
+      display: block;
+      font-size: 20px;
+      letter-spacing: 6px;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    /* Card */
     .card {
       background: white;
       padding: 40px;
@@ -51,11 +80,16 @@
       border: none;
       border-radius: 25px;
       cursor: pointer;
+      transition: transform 0.2s;
     }
 
     #yes {
       background: #ff4d88;
       color: white;
+    }
+
+    #yes:hover {
+      transform: scale(1.1);
     }
 
     #no {
@@ -65,38 +99,7 @@
       top: 0;
     }
 
-        #initials {
-      position: absolute;
-      top: 15%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      z-index: 1;
-    }
-    
-    .letter {
-      font-size: 90px;
-      color: #ff4d88;
-      font-weight: bold;
-      animation: pulse 2s infinite;
-    }
-    
-    .letter::after {
-      content: "❤️❤️❤️❤️❤️";
-      display: block;
-      font-size: 20px;
-      letter-spacing: 6px;
-      text-align: center;
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
-      
-
+    /* Floating hearts */
     .heart {
       position: fixed;
       bottom: -20px;
@@ -105,22 +108,22 @@
     }
 
     @keyframes floatUp {
-      from {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-120vh);
-        opacity: 0;
-      }
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-120vh); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Will you be my Yajmanru? 💙</h1>
+  <!-- RH initials hearts -->
+  <div id="initials">
+    <span class="letter">R</span>
+    <span class="letter">H</span>
+  </div>
 
+  <!-- Main card -->
+  <div class="card">
+    <h1>Will you be my Valentine? 💙</h1>
     <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="love gif">
 
     <div class="buttons">
@@ -130,18 +133,18 @@
   </div>
 
   <script>
-    // Floating hearts
+    // Floating hearts everywhere
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
       heart.innerHTML = "💙";
       heart.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(heart);
       heart.style.fontSize = Math.random() * 25 + 15 + "px";
-      setTimeout(() => heart.remove(), 5000);
-    }, 300);
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 150); // smaller = more hearts
 
-    // No button gets faster
+    // No button running away
     const noBtn = document.getElementById("no");
     let speed = 300;
 
@@ -150,25 +153,31 @@
       const y = Math.random() * 200 - 100;
       noBtn.style.transition = `transform ${speed}ms`;
       noBtn.style.transform = `translate(${x}px, ${y}px)`;
-      speed = Math.max(80, speed - 40);
+      speed = Math.max(80, speed - 40); // speeds up each time
     });
 
+    // Yes button click
     function yesClick() {
       document.body.innerHTML = `
-        <h1 style="
-          color:#ff4d88;
-          font-family:Arial;
+        <div style="
+          height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:linear-gradient(135deg, #ffd6e8, #ffeef6);
+          font-family:Arial, sans-serif;
           text-align:center;
-          margin-top:40vh;">
-          YAYYY😘<br>
-          💙Happy Valentine’s Day Nan Muddinnn Yajmanreeeeeee!💙
-        </h1>
+        ">
+          <div>
+            <h1 style="color:#ff4d88;">
+              YAYYY 💖💙<br>
+              Happy Valentine’s Day Nan Muddinnn Yajmanreeeeeee! 💙
+            </h1>
+          </div>
+        </div>
       `;
     }
   </script>
 
 </body>
 </html>
-
-
-
